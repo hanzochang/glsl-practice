@@ -15,7 +15,7 @@ void main() {
   float base = 0.0011;
 
   gl_FragColor = vec4(
-    base*volume / length(p+vec2(0, 0)), //length(p + vec2(sin(time * 0.23) * 0.4, 0.1)),
+    base*volume / length(p+vec2(0.5, 0.1)), //length(p + vec2(sin(time * 0.23) * 0.4, 0.1)),
     base*volume / length(p+vec2(0, 0)), //length(p + vec2(sin(time * 0.33) * 0.4, -0.1)),
     base*volume / length(p+vec2(0, 0)),//length(p + vec2(sin(time * 0.43) * 0.4, -0.2)),
     0.1
