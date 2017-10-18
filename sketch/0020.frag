@@ -24,8 +24,8 @@ vec3 circle(vec2 _p, float _q, float _d, float _t, float _a){
 
 void main(void){
   vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
-  //p = tile(p, 4., 6.) + vec2(-0.5);
-  float tb = time+(volume*0.01);
+  p = tile(p, 1., 6.) + vec2(-0.5);
+  float tb = time+(volume*1.9);
 
   //vec3 color = vec3(1.0 - step(1.0, length(p)));
   float ts1 = sin(tb);
@@ -33,7 +33,7 @@ void main(void){
   vec3 c1_2 = vec3(step(0.98*ts1, distance(p, vec2(0.0))));
 
   // 生成タイム
-  float ts2 = abs(sin(0.02*volume)+0.55);
+  float ts2 = abs(sin(0.06*volume)+0.55);
   // 太さ
   float b2 = 0.4;
   // アンチエイリアス領域

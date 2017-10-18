@@ -40,9 +40,10 @@ void main(void){
   p = p;
 
   vec3 color = vec3(0.0);
-  for(float i = 1.0 ; i < 8.; i++){
-    color += spiral_line(p, 1.0*i*3.14, 0.0007*volume);
+  for(float i = 1.0 ; i <10.; i++){
+    color += spiral_line(p, 0.041*i*3.14, 0.005*i*10.0*abs(sin(time)*volume*0.004));
   }
+  color *= spiral_line(p, 0.1*3.14, 10.*10.0*abs(sin(time)*volume*0.001));
   //color = mix(color, vec3(1.0) - color, 1.0 - step(10.0,volume));
 
   gl_FragColor = vec4(color, 1.0);// + texture2D(backbuffer, uv);
