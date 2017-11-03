@@ -38,7 +38,7 @@ void main(void){
   vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
 
   // set Camera Positions
-  vec3 cPos = vec3(0.0,  0.0,  1.-(1.*time));
+  vec3 cPos = vec3(time,  time*0.4,  1.-(1.*time));
   vec3 cDir = vec3(.0,  0.0, -1.0);
   vec3 cUp  = vec3(2.0,  1.0,  .0);
   vec3 lightDir = vec3(.5, .6, .5);

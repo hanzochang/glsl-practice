@@ -44,7 +44,7 @@ void main(void){
   vec3 lightDir = vec3(.5, .6, .5);
 
   vec3 cSide = cross(cDir, cUp);
-  float targetDepth = 1.;
+  float targetDepth = 1. + volume*0.01;
 
   // ray
   vec3 ray = normalize(cSide * p.x + cUp * p.y + cDir * targetDepth);
@@ -56,7 +56,7 @@ void main(void){
   for(int i = 0; i < 40; i++){
       distance = distanceFunc(rPos);
       rLen += distance;
-      rPos = cPos + (ray * rLen + sin(rLen)*random2(time));
+      rPos = cPos + (ray * rLen + cos(rLen)*random2(time));
   }
 
   // hit check

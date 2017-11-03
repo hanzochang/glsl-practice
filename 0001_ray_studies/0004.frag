@@ -53,7 +53,7 @@ void main(void){
   float distance = 0.0; // レイとオブジェクト間の最短距離
   float rLen = 0.0;     // レイに継ぎ足す長さ
   vec3  rPos = cPos;    // レイの先端位置
-  for(int i = 0; i < 40; i++){
+  for(int i = 0; i < 60; i++){
       distance = distanceFunc(rPos);
       rLen += distance;
       rPos = cPos + (ray * rLen * sin(rLen+0.02*volume)*random2(time));
