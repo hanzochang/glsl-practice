@@ -14,7 +14,7 @@ void main(void){
     vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
 
     // camera
-    vec3 cPos = vec3(0.0,  0.0,  2.0);
+    vec3 cPos = vec3(0.0,  0.0,  3.0);
     vec3 cDir = vec3(0.0,  0.0, -1.0);
     vec3 cUp  = vec3(0.0,  1.0,  0.0);
     vec3 cSide = cross(cDir, cUp);
@@ -35,7 +35,7 @@ void main(void){
 
     // hit check
     if(abs(distance) < 0.001){
-        gl_FragColor = vec4(vec3(1.0), 1.0);
+        gl_FragColor = vec4(vec3(0.2), 1.0);
     }else{
         gl_FragColor = vec4(vec3(0.0), 1.0);
     }
