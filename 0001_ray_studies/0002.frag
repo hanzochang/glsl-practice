@@ -8,20 +8,10 @@ vec3 trans(vec3 p){
     return mod(p, 2.0) - 1.0;
 }
 
-float random (vec2 st) {
-    return fract(sin(dot(st.xy,
-                         vec2(0.9898,0.23)))*
-        30000.3211234);
-}
-
-float random2 (float x) {
-    return fract(sin(x)*1.952);
-}
-
 float distanceFunc(vec3 p){
-    vec3 q = abs(trans(p));
+    vec3 q = abs(p);
     //return length(max(q - vec3(0.2 * random(vec2(p.x,p.y)), 0.5*random2(p.x), 0.5), 0.0));
-    return length(max(q - vec3(0.003*volume, 0.002*volume, 3.*volume) - random2(q.y)*0.11*sin(time), .0));
+    return length(max(q - vec3(0.2, 0.2, 0.2), 0.0)) -0.01;
 }
 
 vec3 getNormal(vec3 p){
@@ -38,10 +28,10 @@ void main(void){
   vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
 
   // set Camera Positions
-  vec3 cPos = vec3(time,  time*0.4,  1.-(1.*time));
+  vec3 cPos = vec3(0.,  0.,  1.0);
   vec3 cDir = vec3(.0,  0.0, -1.0);
-  vec3 cUp  = vec3(2.0,  1.0,  .0);
-  vec3 lightDir = vec3(.5, .6, .5);
+  vec3 cUp  = vec3(0.,  1.0,  .0);
+  vec3 lightDir = vec3(.0, .6, .5);
 
   vec3 cSide = cross(cDir, cUp);
   float targetDepth = 1.;
@@ -56,7 +46,7 @@ void main(void){
   for(int i = 0; i < 40; i++){
       distance = distanceFunc(rPos);
       rLen += distance;
-      rPos = cPos + (ray * rLen + sin(rLen)*random2(time));
+      rPos = cPos + ray * rLen;
   }
 
   // hit check
